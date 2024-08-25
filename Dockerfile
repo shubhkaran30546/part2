@@ -14,6 +14,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS final
 WORKDIR /app 
 # Copy the published application from the build stage 
 COPY --from=build /app/publish . 
+COPY wwwroot/Pictures /app/wwwroot/Pictures
 # Set the environment variable for ASP.NET Core to listen on port 8080 
 ENV ASPNETCORE_URLS=http://+:8080 
 # Expose the port the app runs on 
