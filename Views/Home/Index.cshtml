@@ -1,0 +1,89 @@
+﻿@using System.Text.Json
+@model List<Picture>
+
+@if (Model != null && Model.Any())
+{
+    <div id="slideshow">
+        <img id="currentPicture" src="@Model[0].Location" alt="@Model[0].Description" />
+        <div id="caption">@Model[0].Description</div>
+        <button id="startStopButton">Start</button>
+        <button id="toggleModeButton">Toggle Mode</button>
+        <button id="prevButton">Previous</button>
+        <button id="nextButton">Next</button>
+    </div>
+}
+else
+{
+    <p>No pictures available.</p>
+}
+
+<script>
+    // Serialize the model using System.Text.Json
+    const pictures = @Html.Raw(JsonSerializer.Serialize(Model));
+
+    let currentIndex = 0;
+    let isPlaying = false;
+    let isRandom = false;
+    let interval;
+
+    function showPicture(index) {
+        console.log(`Showing picture at index: ${index}`);
+        const picture = pictures[index];
+        if (picture) {
+            document.getElementById('currentPicture').src = picture.Location;
+            document.getElementById('currentPicture').alt = picture.Description;
+            document.getElementById('caption').innerText = picture.Description;
+            imgElement.style.width = '800px'; // fixed width
+            imgElement.style.height = 'auto'; // maintains aspect ratio
+        } else {
+            console.error("No picture found at index: " + index);
+        }
+    }
+
+    function startStopShow() {
+        if (isPlaying) {
+            clearInterval(interval);
+            document.getElementById('startStopButton').innerText = 'Start';
+        } else {
+            interval = setInterval(() => {
+                currentIndex = isRandom ? Math.floor(Math.random() * pictures.length) : (currentIndex + 1) % pictures.length;
+                showPicture(currentIndex);
+            }, 2000);
+            document.getElementById('startStopButton').innerText = 'Stop';
+        }
+        isPlaying = !isPlaying;
+    }
+
+    function toggleMode() {
+        isRandom = !isRandom;
+        document.getElementById('toggleModeButton').innerText = isRandom ? 'Sequential Mode' : 'Random Mode';
+    }
+
+    function prevPicture() {
+        if (!isRandom && !isPlaying) {
+            currentIndex = (currentIndex - 1 + pictures.length) % pictures.length;
+            showPicture(currentIndex);
+        }
+    }
+
+    function nextPicture() {
+        if (!isRandom && !isPlaying) {
+            currentIndex = (currentIndex + 1) % pictures.length;
+            showPicture(currentIndex);
+        }
+    }
+
+    // Event listeners
+    document.getElementById('startStopButton').addEventListener('click', startStopShow);
+    document.getElementById('toggleModeButton').addEventListener('click', toggleMode);
+    document.getElementById('prevButton').addEventListener('click', prevPicture);
+    //document.getElementById('nextButton').addEventListener('click', nextPicture);
+    document.getElementById('nextButton').addEventListener('click', function () {
+        currentIndex = (currentIndex + 1) % pictures.length;
+        showPicture(currentIndex);
+    });
+
+    // Initial load
+    showPicture(currentIndex);
+    console.log(`Initial load complete with ${pictures.length} pictures.`);
+</script>

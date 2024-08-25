@@ -1,0 +1,33 @@
+﻿html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color:beige;
+}
+footer {
+    background-color:aquamarine;
+}
+
+#slideshow img {
+    width: 100%; /* or a specific width like 600px */
+    height: auto; /* maintains aspect ratio */
+    max-width: 800px; /* max width of the image */
+    max-height: 600px; /* max height of the image */
+}

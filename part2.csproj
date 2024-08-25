@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
+  <ItemGroup>
+    <None Remove="Services\" />
+    <None Remove="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="Data\" />
+    <Folder Include="wwwroot\Pictures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\images\app.jpg" />
+    <Content Remove="wwwroot\images\" />
+    <Content Remove="wwwroot\Pictures\" />
+    <Content Remove="wwwroot\Pictures\pictures.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\images\app.jpg" />
+    <None Include="wwwroot\Pictures\pictures.txt" />
+  </ItemGroup>
+</Project>

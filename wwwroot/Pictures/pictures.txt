@@ -1,0 +1,21 @@
+﻿Picture1|pic1.jpg|A forest
+Picture2|app.jpg|QR checkin app
+Picture4|pic3.jpg|A tiger
+Picture4|pic4.JPG|Beautiful yyc
+Picture6|pic5.JPG|Beautiful yeg
+Picture7|pic6.jpg|Universal Studios LA
+Picture8|pic7.jpg|California
+Picture9|pic8.jpg|Beautiful yeg sunrise
+Picture9|pic9.jpg|Beautiful yeg
+Picture10|pic10.jpg|Beautiful yeg
+Picture11|pic11.jpg|Elk Island
+Picture12|pic12.jpg|My dream Watch
+Picture13|pic13.JPG|Ghost Station
+Picture14|pic14.jpg|Toronto
+Picture15|pic15.jpg|Serbia
+Picture16|pic16.jpg|Belgrade, Serbia
+Picture17|pic17.jpg|Luxury Car
+Picture18|pic18.jpg|Calgary
+Picture19|pic19.jpg|Alberta
+Picture20|pic20.jpg|Bali
+
