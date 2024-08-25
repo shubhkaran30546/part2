@@ -1,5 +1,5 @@
 # Use the official .NET 8.0 SDK image as the build environment 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build 
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build 
 WORKDIR /src 
 # Copy the project file and restore dependencies 
 COPY ["part2.csproj", "./"] 
@@ -10,7 +10,7 @@ RUN dotnet build "part2.csproj" -c Release -o /app/build
 # Publish the application 
 RUN dotnet publish "part2.csproj" -c Release -o /app/publish 
 # Use the official .NET 8.0 runtime image for the final image 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final 
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS final 
 WORKDIR /app 
 # Copy the published application from the build stage 
 COPY --from=build /app/publish . 
